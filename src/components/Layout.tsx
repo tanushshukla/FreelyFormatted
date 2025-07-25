@@ -18,9 +18,11 @@ const Layout: React.FC<LayoutProps> = ({ children, showSidebar = true }) => {
     { path: '/json-tools', label: 'JSON Tools' },
     { path: '/xml-html-tools', label: 'XML/HTML Tools' },
     { path: '/code-tools', label: 'Code Tools' },
+    { path: '/formatters', label: 'Formatters' },
     { path: '/converters', label: 'Converters' },
     { path: '/encoders-crypto', label: 'Encoders/Crypto' },
     { path: '/utilities', label: 'Utilities' },
+    { path: '/validators', label: 'Validators' },
   ];
 
   const allTools = [
@@ -37,11 +39,16 @@ const Layout: React.FC<LayoutProps> = ({ children, showSidebar = true }) => {
     { name: 'XPath Tester', category: 'XML/HTML Tools', path: '/xml-html-tools' },
     
     // Code Tools
-    { name: 'SQL Formatter', category: 'Code Tools', path: '/code-tools' },
     { name: 'JavaScript Beautifier', category: 'Code Tools', path: '/code-tools' },
     { name: 'JavaScript Minifier', category: 'Code Tools', path: '/code-tools' },
     { name: 'CSS Beautifier', category: 'Code Tools', path: '/code-tools' },
     { name: 'CSS Minifier', category: 'Code Tools', path: '/code-tools' },
+    
+    // Formatters
+    { name: 'JSON Formatter', category: 'Formatters', path: '/formatters' },
+    { name: 'XML Formatter', category: 'Formatters', path: '/formatters' },
+    { name: 'HTML Formatter', category: 'Formatters', path: '/formatters' },
+    { name: 'SQL Formatter', category: 'Formatters', path: '/formatters' },
     
     // Converters
     { name: 'JSON to YAML', category: 'Converters', path: '/converters' },
@@ -49,10 +56,16 @@ const Layout: React.FC<LayoutProps> = ({ children, showSidebar = true }) => {
     { name: 'JSON to CSV', category: 'Converters', path: '/converters' },
     { name: 'CSV to JSON', category: 'Converters', path: '/converters' },
     { name: 'XML to JSON', category: 'Converters', path: '/converters' },
+    { name: 'JSON to XML', category: 'Converters', path: '/converters' },
+    { name: 'CSV to XML', category: 'Converters', path: '/converters' },
     { name: 'Base64 Encode', category: 'Converters', path: '/converters' },
     { name: 'Base64 Decode', category: 'Converters', path: '/converters' },
     { name: 'URL Encode', category: 'Converters', path: '/converters' },
     { name: 'URL Decode', category: 'Converters', path: '/converters' },
+    { name: 'Epoch to Date', category: 'Converters', path: '/converters' },
+    { name: 'Date to Epoch', category: 'Converters', path: '/converters' },
+    { name: 'XSD Generator', category: 'Converters', path: '/converters' },
+    { name: 'XSLT Transformer', category: 'Converters', path: '/converters' },
     
     // Encoders/Crypto
     { name: 'MD5 Hash', category: 'Encoders/Crypto', path: '/encoders-crypto' },
@@ -71,13 +84,17 @@ const Layout: React.FC<LayoutProps> = ({ children, showSidebar = true }) => {
     { name: 'Line Sort', category: 'Utilities', path: '/utilities' },
     { name: 'Remove Duplicates', category: 'Utilities', path: '/utilities' },
     { name: 'Text Diff', category: 'Utilities', path: '/utilities' },
-    { name: 'Regex Tester', category: 'Utilities', path: '/utilities' },
     { name: 'Password Generator', category: 'Utilities', path: '/utilities' },
     { name: 'Lorem Ipsum Generator', category: 'Utilities', path: '/utilities' },
     { name: 'Email Validator', category: 'Utilities', path: '/utilities' },
     { name: 'URL Validator', category: 'Utilities', path: '/utilities' },
-    { name: 'Credit Card Validator', category: 'Utilities', path: '/utilities' },
     { name: 'UUID Generator', category: 'Utilities', path: '/utilities' },
+    
+    // Validators
+    { name: 'Regular Expression Tester', category: 'Validators', path: '/validators' },
+    { name: 'Java Regex Tester', category: 'Validators', path: '/validators' },
+    { name: 'Cron Expression Generator', category: 'Validators', path: '/validators' },
+    { name: 'Credit Card Generator', category: 'Validators', path: '/validators' },
   ];
 
   const filteredTools = allTools.filter(tool => 
@@ -229,11 +246,21 @@ const Layout: React.FC<LayoutProps> = ({ children, showSidebar = true }) => {
                   <div>
                     <h4 className="text-sm font-medium text-gray-900 mb-2">Code Tools</h4>
                     <div className="space-y-1">
-                      <Link to="/code-tools?tool=sql-formatter" className="block px-3 py-2 text-sm text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded-md transition-colors">SQL Formatter</Link>
                       <Link to="/code-tools?tool=js-beautifier" className="block px-3 py-2 text-sm text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded-md transition-colors">JavaScript Beautifier</Link>
                       <Link to="/code-tools?tool=js-minifier" className="block px-3 py-2 text-sm text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded-md transition-colors">JavaScript Minifier</Link>
                       <Link to="/code-tools?tool=css-beautifier" className="block px-3 py-2 text-sm text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded-md transition-colors">CSS Beautifier</Link>
                       <Link to="/code-tools?tool=css-minifier" className="block px-3 py-2 text-sm text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded-md transition-colors">CSS Minifier</Link>
+                    </div>
+                  </div>
+                  
+                  {/* Formatters */}
+                  <div>
+                    <h4 className="text-sm font-medium text-gray-900 mb-2">Formatters</h4>
+                    <div className="space-y-1">
+                      <Link to="/formatters?tool=json" className="block px-3 py-2 text-sm text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded-md transition-colors">JSON Formatter</Link>
+                      <Link to="/formatters?tool=xml" className="block px-3 py-2 text-sm text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded-md transition-colors">XML Formatter</Link>
+                      <Link to="/formatters?tool=html" className="block px-3 py-2 text-sm text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded-md transition-colors">HTML Formatter</Link>
+                      <Link to="/formatters?tool=sql" className="block px-3 py-2 text-sm text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded-md transition-colors">SQL Formatter</Link>
                     </div>
                   </div>
                   
@@ -246,10 +273,16 @@ const Layout: React.FC<LayoutProps> = ({ children, showSidebar = true }) => {
                       <Link to="/converters?tool=json-to-csv" className="block px-3 py-2 text-sm text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded-md transition-colors">JSON to CSV</Link>
                       <Link to="/converters?tool=csv-to-json" className="block px-3 py-2 text-sm text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded-md transition-colors">CSV to JSON</Link>
                       <Link to="/converters?tool=xml-to-json" className="block px-3 py-2 text-sm text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded-md transition-colors">XML to JSON</Link>
+                      <Link to="/converters?tool=json-to-xml" className="block px-3 py-2 text-sm text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded-md transition-colors">JSON to XML</Link>
+                      <Link to="/converters?tool=csv-to-xml" className="block px-3 py-2 text-sm text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded-md transition-colors">CSV to XML</Link>
                       <Link to="/converters?tool=base64-encode" className="block px-3 py-2 text-sm text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded-md transition-colors">Base64 Encode</Link>
                       <Link to="/converters?tool=base64-decode" className="block px-3 py-2 text-sm text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded-md transition-colors">Base64 Decode</Link>
                       <Link to="/converters?tool=url-encode" className="block px-3 py-2 text-sm text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded-md transition-colors">URL Encode</Link>
                       <Link to="/converters?tool=url-decode" className="block px-3 py-2 text-sm text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded-md transition-colors">URL Decode</Link>
+                      <Link to="/converters?tool=epoch-to-date" className="block px-3 py-2 text-sm text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded-md transition-colors">Epoch to Date</Link>
+                      <Link to="/converters?tool=date-to-epoch" className="block px-3 py-2 text-sm text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded-md transition-colors">Date to Epoch</Link>
+                      <Link to="/converters?tool=xsd-generator" className="block px-3 py-2 text-sm text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded-md transition-colors">XSD Generator</Link>
+                      <Link to="/converters?tool=xslt-transformer" className="block px-3 py-2 text-sm text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded-md transition-colors">XSLT Transformer</Link>
                     </div>
                   </div>
                   
@@ -273,18 +306,27 @@ const Layout: React.FC<LayoutProps> = ({ children, showSidebar = true }) => {
                   <div>
                     <h4 className="text-sm font-medium text-gray-900 mb-2">Utilities</h4>
                     <div className="space-y-1">
-                      <Link to="/utilities?tool=case-converter" className="block px-3 py-2 text-sm text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded-md transition-colors">Text Case Converter</Link>
+                      <Link to="/utilities?tool=text-case" className="block px-3 py-2 text-sm text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded-md transition-colors">Text Case Converter</Link>
                       <Link to="/utilities?tool=word-count" className="block px-3 py-2 text-sm text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded-md transition-colors">Word Count</Link>
                       <Link to="/utilities?tool=line-sort" className="block px-3 py-2 text-sm text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded-md transition-colors">Line Sort</Link>
-                      <Link to="/utilities?tool=remove-duplicates" className="block px-3 py-2 text-sm text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded-md transition-colors">Remove Duplicates</Link>
+                      <Link to="/utilities?tool=duplicate-remove" className="block px-3 py-2 text-sm text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded-md transition-colors">Remove Duplicates</Link>
                       <Link to="/utilities?tool=text-diff" className="block px-3 py-2 text-sm text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded-md transition-colors">Text Diff</Link>
-                      <Link to="/utilities?tool=regex-tester" className="block px-3 py-2 text-sm text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded-md transition-colors">Regex Tester</Link>
-                      <Link to="/utilities?tool=password-generator" className="block px-3 py-2 text-sm text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded-md transition-colors">Password Generator</Link>
+                      <Link to="/utilities?tool=password-gen" className="block px-3 py-2 text-sm text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded-md transition-colors">Password Generator</Link>
                       <Link to="/utilities?tool=lorem-ipsum" className="block px-3 py-2 text-sm text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded-md transition-colors">Lorem Ipsum Generator</Link>
-                      <Link to="/utilities?tool=email-validator" className="block px-3 py-2 text-sm text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded-md transition-colors">Email Validator</Link>
-                      <Link to="/utilities?tool=url-validator" className="block px-3 py-2 text-sm text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded-md transition-colors">URL Validator</Link>
-                      <Link to="/utilities?tool=credit-card-validator" className="block px-3 py-2 text-sm text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded-md transition-colors">Credit Card Validator</Link>
-                      <Link to="/utilities?tool=uuid-generator" className="block px-3 py-2 text-sm text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded-md transition-colors">UUID Generator</Link>
+                      <Link to="/utilities?tool=email-validate" className="block px-3 py-2 text-sm text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded-md transition-colors">Email Validator</Link>
+                      <Link to="/utilities?tool=url-validate" className="block px-3 py-2 text-sm text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded-md transition-colors">URL Validator</Link>
+                      <Link to="/utilities?tool=uuid-generate" className="block px-3 py-2 text-sm text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded-md transition-colors">UUID Generator</Link>
+                    </div>
+                  </div>
+                  
+                  {/* Validators */}
+                  <div>
+                    <h4 className="text-sm font-medium text-gray-900 mb-2">Validators</h4>
+                    <div className="space-y-1">
+                      <Link to="/validators?tool=regex-tester" className="block px-3 py-2 text-sm text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded-md transition-colors">Regular Expression Tester</Link>
+                      <Link to="/validators?tool=java-regex-tester" className="block px-3 py-2 text-sm text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded-md transition-colors">Java Regex Tester</Link>
+                      <Link to="/validators?tool=cron-generator" className="block px-3 py-2 text-sm text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded-md transition-colors">Cron Expression Generator</Link>
+                      <Link to="/validators?tool=credit-card-generator" className="block px-3 py-2 text-sm text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded-md transition-colors">Credit Card Generator</Link>
                     </div>
                   </div>
                 </div>
@@ -316,4 +358,4 @@ const Layout: React.FC<LayoutProps> = ({ children, showSidebar = true }) => {
   );
 };
 
-export default Layout;
+export { Layout as default };

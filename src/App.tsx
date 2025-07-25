@@ -7,6 +7,10 @@ import CodeTools from '@/pages/CodeTools';
 import Converters from '@/pages/Converters';
 import EncodersCrypto from '@/pages/EncodersCrypto';
 import Utilities from '@/pages/Utilities';
+import Validators from '@/pages/Validators';
+import Formatters from '@/pages/Formatters';
+import StringEscaper from '@/pages/StringEscaper';
+import WebResources from '@/pages/WebResources';
 
 function App() {
   return (
@@ -20,6 +24,10 @@ function App() {
           <Route path="/converters" element={<Converters />} />
           <Route path="/encoders-crypto" element={<EncodersCrypto />} />
           <Route path="/utilities" element={<Utilities />} />
+          <Route path="/validators" element={<Validators />} />
+          <Route path="/formatters" element={<Formatters />} />
+          <Route path="/string-escaper" element={<StringEscaper />} />
+          <Route path="/web-resources" element={<WebResources />} />
         </Routes>
       </Router>
       <Toaster position="top-right" richColors />

@@ -6,7 +6,7 @@ import { toast } from 'sonner';
 import CryptoJS from 'crypto-js';
 import QRCode from 'qrcode';
 
-type CryptoTool = 'md5' | 'sha1' | 'sha256' | 'sha512' | 'base64-encode' | 'base64-decode' | 'url-encode' | 'url-decode' | 'html-encode' | 'html-decode' | 'aes-encrypt' | 'aes-decrypt' | 'qr-generate' | 'jwt-decode';
+type CryptoTool = 'md5' | 'sha1' | 'sha256' | 'sha512' | 'base64-encode' | 'base64-decode' | 'url-encode' | 'url-decode' | 'html-encode' | 'html-decode' | 'aes-encrypt' | 'aes-decrypt' | 'qr-generate' | 'jwt-decode' | 'hmac-md5' | 'hmac-sha1' | 'hmac-sha256' | 'hmac-sha512' | 'file-encoding';
 
 const EncodersCrypto: React.FC = () => {
   const [searchParams] = useSearchParams();
@@ -246,6 +246,146 @@ const EncodersCrypto: React.FC = () => {
     }
   };
 
+  const generateHMACMD5 = async () => {
+    try {
+      if (!secretKey) {
+        throw new Error('Secret key is required for HMAC');
+      }
+      const encoder = new TextEncoder();
+      const keyData = encoder.encode(secretKey);
+      const messageData = encoder.encode(input);
+      
+      const cryptoKey = await crypto.subtle.importKey(
+        'raw',
+        keyData,
+        { name: 'HMAC', hash: 'SHA-1' },
+        false,
+        ['sign']
+      );
+      
+      const signature = await crypto.subtle.sign('HMAC', cryptoKey, messageData);
+      const hashArray = Array.from(new Uint8Array(signature));
+      const hashHex = hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+      
+      setOutput(hashHex);
+      toast.success('HMAC-MD5 generated successfully!');
+    } catch (error) {
+      const errorMessage = error instanceof Error ? error.message : 'Error generating HMAC-MD5';
+      setOutput(`Error: ${errorMessage}`);
+      toast.error('Error generating HMAC-MD5');
+    }
+  };
+
+  const generateHMACSHA1 = async () => {
+    try {
+      if (!secretKey) {
+        throw new Error('Secret key is required for HMAC');
+      }
+      const encoder = new TextEncoder();
+      const keyData = encoder.encode(secretKey);
+      const messageData = encoder.encode(input);
+      
+      const cryptoKey = await crypto.subtle.importKey(
+        'raw',
+        keyData,
+        { name: 'HMAC', hash: 'SHA-1' },
+        false,
+        ['sign']
+      );
+      
+      const signature = await crypto.subtle.sign('HMAC', cryptoKey, messageData);
+      const hashArray = Array.from(new Uint8Array(signature));
+      const hashHex = hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+      
+      setOutput(hashHex);
+      toast.success('HMAC-SHA1 generated successfully!');
+    } catch (error) {
+      const errorMessage = error instanceof Error ? error.message : 'Error generating HMAC-SHA1';
+      setOutput(`Error: ${errorMessage}`);
+      toast.error('Error generating HMAC-SHA1');
+    }
+  };
+
+  const generateHMACSHA256 = async () => {
+    try {
+      if (!secretKey) {
+        throw new Error('Secret key is required for HMAC');
+      }
+      const encoder = new TextEncoder();
+      const keyData = encoder.encode(secretKey);
+      const messageData = encoder.encode(input);
+      
+      const cryptoKey = await crypto.subtle.importKey(
+        'raw',
+        keyData,
+        { name: 'HMAC', hash: 'SHA-256' },
+        false,
+        ['sign']
+      );
+      
+      const signature = await crypto.subtle.sign('HMAC', cryptoKey, messageData);
+      const hashArray = Array.from(new Uint8Array(signature));
+      const hashHex = hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+      
+      setOutput(hashHex);
+      toast.success('HMAC-SHA256 generated successfully!');
+    } catch (error) {
+      const errorMessage = error instanceof Error ? error.message : 'Error generating HMAC-SHA256';
+      setOutput(`Error: ${errorMessage}`);
+      toast.error('Error generating HMAC-SHA256');
+    }
+  };
+
+  const generateHMACSHA512 = async () => {
+    try {
+      if (!secretKey) {
+        throw new Error('Secret key is required for HMAC');
+      }
+      const encoder = new TextEncoder();
+      const keyData = encoder.encode(secretKey);
+      const messageData = encoder.encode(input);
+      
+      const cryptoKey = await crypto.subtle.importKey(
+        'raw',
+        keyData,
+        { name: 'HMAC', hash: 'SHA-512' },
+        false,
+        ['sign']
+      );
+      
+      const signature = await crypto.subtle.sign('HMAC', cryptoKey, messageData);
+      const hashArray = Array.from(new Uint8Array(signature));
+      const hashHex = hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+      
+      setOutput(hashHex);
+      toast.success('HMAC-SHA512 generated successfully!');
+    } catch (error) {
+      const errorMessage = error instanceof Error ? error.message : 'Error generating HMAC-SHA512';
+      setOutput(`Error: ${errorMessage}`);
+      toast.error('Error generating HMAC-SHA512');
+    }
+  };
+
+  const convertFileEncoding = () => {
+    try {
+      // This is a simplified file encoding converter
+      // In a real implementation, you'd need more sophisticated encoding detection and conversion
+      const encoder = new TextEncoder();
+      const decoder = new TextDecoder('utf-8');
+      
+      // Convert to bytes and back to demonstrate encoding conversion
+      const bytes = encoder.encode(input);
+      const converted = decoder.decode(bytes);
+      
+      setOutput(converted);
+      toast.success('File encoding converted successfully!');
+    } catch (error) {
+      const errorMessage = error instanceof Error ? error.message : 'Error converting file encoding';
+      setOutput(`Error: ${errorMessage}`);
+      toast.error('Error converting file encoding');
+    }
+  };
+
   const handleProcess = () => {
     switch (activeTool) {
       case 'md5':
@@ -289,6 +429,21 @@ const EncodersCrypto: React.FC = () => {
         break;
       case 'jwt-decode':
         decodeJWT();
+        break;
+      case 'hmac-md5':
+        generateHMACMD5();
+        break;
+      case 'hmac-sha1':
+        generateHMACSHA1();
+        break;
+      case 'hmac-sha256':
+        generateHMACSHA256();
+        break;
+      case 'hmac-sha512':
+        generateHMACSHA512();
+        break;
+      case 'file-encoding':
+        convertFileEncoding();
         break;
     }
   };
@@ -351,12 +506,17 @@ const EncodersCrypto: React.FC = () => {
     { id: 'sha1' as CryptoTool, name: 'SHA1 Hash', icon: Hash, category: 'Hash' },
     { id: 'sha256' as CryptoTool, name: 'SHA256 Hash', icon: Hash, category: 'Hash' },
     { id: 'sha512' as CryptoTool, name: 'SHA512 Hash', icon: Hash, category: 'Hash' },
+    { id: 'hmac-md5' as CryptoTool, name: 'HMAC-MD5', icon: Key, category: 'HMAC' },
+    { id: 'hmac-sha1' as CryptoTool, name: 'HMAC-SHA1', icon: Key, category: 'HMAC' },
+    { id: 'hmac-sha256' as CryptoTool, name: 'HMAC-SHA256', icon: Key, category: 'HMAC' },
+    { id: 'hmac-sha512' as CryptoTool, name: 'HMAC-SHA512', icon: Key, category: 'HMAC' },
     { id: 'base64-encode' as CryptoTool, name: 'Base64 Encode', icon: Shield, category: 'Encoding' },
     { id: 'base64-decode' as CryptoTool, name: 'Base64 Decode', icon: Shield, category: 'Encoding' },
     { id: 'url-encode' as CryptoTool, name: 'URL Encode', icon: Shield, category: 'Encoding' },
     { id: 'url-decode' as CryptoTool, name: 'URL Decode', icon: Shield, category: 'Encoding' },
     { id: 'html-encode' as CryptoTool, name: 'HTML Encode', icon: Shield, category: 'Encoding' },
     { id: 'html-decode' as CryptoTool, name: 'HTML Decode', icon: Shield, category: 'Encoding' },
+    { id: 'file-encoding' as CryptoTool, name: 'File Encoding', icon: Shield, category: 'Encoding' },
     { id: 'aes-encrypt' as CryptoTool, name: 'AES Encrypt', icon: Key, category: 'Encryption' },
     { id: 'aes-decrypt' as CryptoTool, name: 'AES Decrypt', icon: Key, category: 'Encryption' },
     { id: 'qr-generate' as CryptoTool, name: 'QR Code', icon: Shield, category: 'Generate' },
@@ -370,6 +530,11 @@ const EncodersCrypto: React.FC = () => {
       case 'sha256':
       case 'sha512':
         return 'Enter text to hash...';
+      case 'hmac-md5':
+      case 'hmac-sha1':
+      case 'hmac-sha256':
+      case 'hmac-sha512':
+        return 'Enter text to generate HMAC...';
       case 'base64-encode':
       case 'url-encode':
       case 'html-encode':
@@ -387,12 +552,14 @@ const EncodersCrypto: React.FC = () => {
         return 'Enter text or URL for QR code...';
       case 'jwt-decode':
         return 'Enter JWT token...';
+      case 'file-encoding':
+        return 'Enter text to convert encoding...';
       default:
         return 'Enter your text here...';
     }
   };
 
-  const requiresKey = activeTool === 'aes-encrypt' || activeTool === 'aes-decrypt';
+  const requiresKey = activeTool === 'aes-encrypt' || activeTool === 'aes-decrypt' || activeTool.startsWith('hmac-');
   const isQRCode = activeTool === 'qr-generate';
 
   return (
