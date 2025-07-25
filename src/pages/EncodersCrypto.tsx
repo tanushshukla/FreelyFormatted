@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import Layout from '@/components/Layout';
 import { Copy, Download, Upload, Shield, Hash, Key, Eye, EyeOff } from 'lucide-react';
 import { toast } from 'sonner';
@@ -8,6 +9,7 @@ import QRCode from 'qrcode';
 type CryptoTool = 'md5' | 'sha1' | 'sha256' | 'sha512' | 'base64-encode' | 'base64-decode' | 'url-encode' | 'url-decode' | 'html-encode' | 'html-decode' | 'aes-encrypt' | 'aes-decrypt' | 'qr-generate' | 'jwt-decode';
 
 const EncodersCrypto: React.FC = () => {
+  const [searchParams] = useSearchParams();
   const [activeTool, setActiveTool] = useState<CryptoTool>('md5');
   const [input, setInput] = useState('');
   const [output, setOutput] = useState('');
@@ -15,6 +17,26 @@ const EncodersCrypto: React.FC = () => {
   const [showKey, setShowKey] = useState(false);
   const [qrSize, setQrSize] = useState(256);
   const [qrErrorLevel, setQrErrorLevel] = useState<'L' | 'M' | 'Q' | 'H'>('M');
+
+  // Handle URL parameters to set active tool
+  useEffect(() => {
+    const toolParam = searchParams.get('tool');
+    const toolMapping: Record<string, CryptoTool> = {
+      'md5': 'md5',
+      'sha1': 'sha1',
+      'sha256': 'sha256',
+      'sha512': 'sha512',
+      'aes-encrypt': 'aes-encrypt',
+      'aes-decrypt': 'aes-decrypt',
+      'qr-generator': 'qr-generate',
+      'html-encode': 'html-encode',
+      'html-decode': 'html-decode'
+    };
+    
+    if (toolParam && toolMapping[toolParam]) {
+      setActiveTool(toolMapping[toolParam]);
+    }
+  }, [searchParams]);
 
   const generateMD5 = () => {
     try {

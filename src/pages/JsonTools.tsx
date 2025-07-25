@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import Layout from '@/components/Layout';
 import { Copy, Download, Upload, FileText, CheckCircle, AlertCircle } from 'lucide-react';
 import { toast } from 'sonner';
@@ -13,6 +14,7 @@ interface JsonError {
 }
 
 const JsonTools: React.FC = () => {
+  const [searchParams] = useSearchParams();
   const [activeTool, setActiveTool] = useState<JsonTool>('formatter');
   const [input, setInput] = useState('');
   const [output, setOutput] = useState('');
@@ -20,6 +22,14 @@ const JsonTools: React.FC = () => {
   const [validationMode, setValidationMode] = useState<'strict' | 'lenient'>('strict');
   const [errors, setErrors] = useState<JsonError[]>([]);
   const [isValid, setIsValid] = useState<boolean | null>(null);
+
+  // Handle URL parameters to set active tool
+  useEffect(() => {
+    const toolParam = searchParams.get('tool');
+    if (toolParam && ['formatter', 'validator', 'escape'].includes(toolParam)) {
+      setActiveTool(toolParam as JsonTool);
+    }
+  }, [searchParams]);
 
   const formatJson = () => {
     try {

@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import Layout from '@/components/Layout';
 import { Copy, Download, Upload, Type, Calculator, Shuffle, Search } from 'lucide-react';
 import { toast } from 'sonner';
@@ -9,6 +10,7 @@ type TextCase = 'upper' | 'lower' | 'title' | 'sentence' | 'camel' | 'pascal' | 
 type SortOrder = 'asc' | 'desc' | 'random';
 
 const Utilities: React.FC = () => {
+  const [searchParams] = useSearchParams();
   const [activeTool, setActiveTool] = useState<UtilityTool>('text-case');
   const [input, setInput] = useState('');
   const [output, setOutput] = useState('');
@@ -23,6 +25,29 @@ const Utilities: React.FC = () => {
   const [includeNumbers, setIncludeNumbers] = useState(true);
   const [includeSymbols, setIncludeSymbols] = useState(true);
   const [loremParagraphs, setLoremParagraphs] = useState(3);
+
+  // Handle URL parameters to set active tool
+  useEffect(() => {
+    const toolParam = searchParams.get('tool');
+    const toolMapping: Record<string, UtilityTool> = {
+      'text-case': 'text-case',
+      'word-count': 'word-count',
+      'line-sort': 'line-sort',
+      'duplicate-remove': 'duplicate-remove',
+      'text-diff': 'text-diff',
+      'regex-test': 'regex-test',
+      'password-gen': 'password-gen',
+      'lorem-ipsum': 'lorem-ipsum',
+      'email-validate': 'email-validate',
+      'url-validate': 'url-validate',
+      'credit-card-validate': 'credit-card-validate',
+      'uuid-generate': 'uuid-generate'
+    };
+    
+    if (toolParam && toolMapping[toolParam]) {
+      setActiveTool(toolMapping[toolParam]);
+    }
+  }, [searchParams]);
 
   const convertTextCase = () => {
     try {

@@ -207,9 +207,9 @@ const Layout: React.FC<LayoutProps> = ({ children, showSidebar = true }) => {
                   <div>
                     <h4 className="text-sm font-medium text-gray-900 mb-2">JSON Tools</h4>
                     <div className="space-y-1">
-                      <Link to="/json-tools" className="block px-3 py-2 text-sm text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded-md transition-colors">JSON Formatter</Link>
-                      <Link to="/json-tools" className="block px-3 py-2 text-sm text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded-md transition-colors">JSON Validator</Link>
-                      <Link to="/json-tools" className="block px-3 py-2 text-sm text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded-md transition-colors">JSON Escape/Unescape</Link>
+                      <Link to="/json-tools?tool=formatter" className="block px-3 py-2 text-sm text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded-md transition-colors">JSON Formatter</Link>
+                      <Link to="/json-tools?tool=validator" className="block px-3 py-2 text-sm text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded-md transition-colors">JSON Validator</Link>
+                      <Link to="/json-tools?tool=escape" className="block px-3 py-2 text-sm text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded-md transition-colors">JSON Escape/Unescape</Link>
                     </div>
                   </div>
                   
@@ -217,11 +217,11 @@ const Layout: React.FC<LayoutProps> = ({ children, showSidebar = true }) => {
                   <div>
                     <h4 className="text-sm font-medium text-gray-900 mb-2">XML/HTML Tools</h4>
                     <div className="space-y-1">
-                      <Link to="/xml-html-tools" className="block px-3 py-2 text-sm text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded-md transition-colors">XML Formatter</Link>
-                      <Link to="/xml-html-tools" className="block px-3 py-2 text-sm text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded-md transition-colors">HTML Formatter</Link>
-                      <Link to="/xml-html-tools" className="block px-3 py-2 text-sm text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded-md transition-colors">XML Validator</Link>
-                      <Link to="/xml-html-tools" className="block px-3 py-2 text-sm text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded-md transition-colors">HTML Validator</Link>
-                      <Link to="/xml-html-tools" className="block px-3 py-2 text-sm text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded-md transition-colors">XPath Tester</Link>
+                      <Link to="/xml-html-tools?tool=xml-formatter" className="block px-3 py-2 text-sm text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded-md transition-colors">XML Formatter</Link>
+                      <Link to="/xml-html-tools?tool=html-formatter" className="block px-3 py-2 text-sm text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded-md transition-colors">HTML Formatter</Link>
+                      <Link to="/xml-html-tools?tool=xml-validator" className="block px-3 py-2 text-sm text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded-md transition-colors">XML Validator</Link>
+                      <Link to="/xml-html-tools?tool=html-validator" className="block px-3 py-2 text-sm text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded-md transition-colors">HTML Validator</Link>
+                      <Link to="/xml-html-tools?tool=xpath-tester" className="block px-3 py-2 text-sm text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded-md transition-colors">XPath Tester</Link>
                     </div>
                   </div>
                   
@@ -229,11 +229,11 @@ const Layout: React.FC<LayoutProps> = ({ children, showSidebar = true }) => {
                   <div>
                     <h4 className="text-sm font-medium text-gray-900 mb-2">Code Tools</h4>
                     <div className="space-y-1">
-                      <Link to="/code-tools" className="block px-3 py-2 text-sm text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded-md transition-colors">SQL Formatter</Link>
-                      <Link to="/code-tools" className="block px-3 py-2 text-sm text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded-md transition-colors">JavaScript Beautifier</Link>
-                      <Link to="/code-tools" className="block px-3 py-2 text-sm text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded-md transition-colors">JavaScript Minifier</Link>
-                      <Link to="/code-tools" className="block px-3 py-2 text-sm text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded-md transition-colors">CSS Beautifier</Link>
-                      <Link to="/code-tools" className="block px-3 py-2 text-sm text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded-md transition-colors">CSS Minifier</Link>
+                      <Link to="/code-tools?tool=sql-formatter" className="block px-3 py-2 text-sm text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded-md transition-colors">SQL Formatter</Link>
+                      <Link to="/code-tools?tool=js-beautifier" className="block px-3 py-2 text-sm text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded-md transition-colors">JavaScript Beautifier</Link>
+                      <Link to="/code-tools?tool=js-minifier" className="block px-3 py-2 text-sm text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded-md transition-colors">JavaScript Minifier</Link>
+                      <Link to="/code-tools?tool=css-beautifier" className="block px-3 py-2 text-sm text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded-md transition-colors">CSS Beautifier</Link>
+                      <Link to="/code-tools?tool=css-minifier" className="block px-3 py-2 text-sm text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded-md transition-colors">CSS Minifier</Link>
                     </div>
                   </div>
                   
@@ -241,15 +241,15 @@ const Layout: React.FC<LayoutProps> = ({ children, showSidebar = true }) => {
                   <div>
                     <h4 className="text-sm font-medium text-gray-900 mb-2">Converters</h4>
                     <div className="space-y-1">
-                      <Link to="/converters" className="block px-3 py-2 text-sm text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded-md transition-colors">JSON to YAML</Link>
-                      <Link to="/converters" className="block px-3 py-2 text-sm text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded-md transition-colors">YAML to JSON</Link>
-                      <Link to="/converters" className="block px-3 py-2 text-sm text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded-md transition-colors">JSON to CSV</Link>
-                      <Link to="/converters" className="block px-3 py-2 text-sm text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded-md transition-colors">CSV to JSON</Link>
-                      <Link to="/converters" className="block px-3 py-2 text-sm text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded-md transition-colors">XML to JSON</Link>
-                      <Link to="/converters" className="block px-3 py-2 text-sm text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded-md transition-colors">Base64 Encode</Link>
-                      <Link to="/converters" className="block px-3 py-2 text-sm text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded-md transition-colors">Base64 Decode</Link>
-                      <Link to="/converters" className="block px-3 py-2 text-sm text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded-md transition-colors">URL Encode</Link>
-                      <Link to="/converters" className="block px-3 py-2 text-sm text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded-md transition-colors">URL Decode</Link>
+                      <Link to="/converters?tool=json-to-yaml" className="block px-3 py-2 text-sm text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded-md transition-colors">JSON to YAML</Link>
+                      <Link to="/converters?tool=yaml-to-json" className="block px-3 py-2 text-sm text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded-md transition-colors">YAML to JSON</Link>
+                      <Link to="/converters?tool=json-to-csv" className="block px-3 py-2 text-sm text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded-md transition-colors">JSON to CSV</Link>
+                      <Link to="/converters?tool=csv-to-json" className="block px-3 py-2 text-sm text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded-md transition-colors">CSV to JSON</Link>
+                      <Link to="/converters?tool=xml-to-json" className="block px-3 py-2 text-sm text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded-md transition-colors">XML to JSON</Link>
+                      <Link to="/converters?tool=base64-encode" className="block px-3 py-2 text-sm text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded-md transition-colors">Base64 Encode</Link>
+                      <Link to="/converters?tool=base64-decode" className="block px-3 py-2 text-sm text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded-md transition-colors">Base64 Decode</Link>
+                      <Link to="/converters?tool=url-encode" className="block px-3 py-2 text-sm text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded-md transition-colors">URL Encode</Link>
+                      <Link to="/converters?tool=url-decode" className="block px-3 py-2 text-sm text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded-md transition-colors">URL Decode</Link>
                     </div>
                   </div>
                   
@@ -257,15 +257,15 @@ const Layout: React.FC<LayoutProps> = ({ children, showSidebar = true }) => {
                   <div>
                     <h4 className="text-sm font-medium text-gray-900 mb-2">Encoders/Crypto</h4>
                     <div className="space-y-1">
-                      <Link to="/encoders-crypto" className="block px-3 py-2 text-sm text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded-md transition-colors">MD5 Hash</Link>
-                      <Link to="/encoders-crypto" className="block px-3 py-2 text-sm text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded-md transition-colors">SHA1 Hash</Link>
-                      <Link to="/encoders-crypto" className="block px-3 py-2 text-sm text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded-md transition-colors">SHA256 Hash</Link>
-                      <Link to="/encoders-crypto" className="block px-3 py-2 text-sm text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded-md transition-colors">SHA512 Hash</Link>
-                      <Link to="/encoders-crypto" className="block px-3 py-2 text-sm text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded-md transition-colors">AES Encrypt</Link>
-                      <Link to="/encoders-crypto" className="block px-3 py-2 text-sm text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded-md transition-colors">AES Decrypt</Link>
-                      <Link to="/encoders-crypto" className="block px-3 py-2 text-sm text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded-md transition-colors">QR Code Generator</Link>
-                      <Link to="/encoders-crypto" className="block px-3 py-2 text-sm text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded-md transition-colors">HTML Encode</Link>
-                      <Link to="/encoders-crypto" className="block px-3 py-2 text-sm text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded-md transition-colors">HTML Decode</Link>
+                      <Link to="/encoders-crypto?tool=md5" className="block px-3 py-2 text-sm text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded-md transition-colors">MD5 Hash</Link>
+                      <Link to="/encoders-crypto?tool=sha1" className="block px-3 py-2 text-sm text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded-md transition-colors">SHA1 Hash</Link>
+                      <Link to="/encoders-crypto?tool=sha256" className="block px-3 py-2 text-sm text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded-md transition-colors">SHA256 Hash</Link>
+                      <Link to="/encoders-crypto?tool=sha512" className="block px-3 py-2 text-sm text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded-md transition-colors">SHA512 Hash</Link>
+                      <Link to="/encoders-crypto?tool=aes-encrypt" className="block px-3 py-2 text-sm text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded-md transition-colors">AES Encrypt</Link>
+                      <Link to="/encoders-crypto?tool=aes-decrypt" className="block px-3 py-2 text-sm text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded-md transition-colors">AES Decrypt</Link>
+                      <Link to="/encoders-crypto?tool=qr-generator" className="block px-3 py-2 text-sm text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded-md transition-colors">QR Code Generator</Link>
+                      <Link to="/encoders-crypto?tool=html-encode" className="block px-3 py-2 text-sm text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded-md transition-colors">HTML Encode</Link>
+                      <Link to="/encoders-crypto?tool=html-decode" className="block px-3 py-2 text-sm text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded-md transition-colors">HTML Decode</Link>
                     </div>
                   </div>
                   
@@ -273,18 +273,18 @@ const Layout: React.FC<LayoutProps> = ({ children, showSidebar = true }) => {
                   <div>
                     <h4 className="text-sm font-medium text-gray-900 mb-2">Utilities</h4>
                     <div className="space-y-1">
-                      <Link to="/utilities" className="block px-3 py-2 text-sm text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded-md transition-colors">Text Case Converter</Link>
-                      <Link to="/utilities" className="block px-3 py-2 text-sm text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded-md transition-colors">Word Count</Link>
-                      <Link to="/utilities" className="block px-3 py-2 text-sm text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded-md transition-colors">Line Sort</Link>
-                      <Link to="/utilities" className="block px-3 py-2 text-sm text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded-md transition-colors">Remove Duplicates</Link>
-                      <Link to="/utilities" className="block px-3 py-2 text-sm text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded-md transition-colors">Text Diff</Link>
-                      <Link to="/utilities" className="block px-3 py-2 text-sm text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded-md transition-colors">Regex Tester</Link>
-                      <Link to="/utilities" className="block px-3 py-2 text-sm text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded-md transition-colors">Password Generator</Link>
-                      <Link to="/utilities" className="block px-3 py-2 text-sm text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded-md transition-colors">Lorem Ipsum Generator</Link>
-                      <Link to="/utilities" className="block px-3 py-2 text-sm text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded-md transition-colors">Email Validator</Link>
-                      <Link to="/utilities" className="block px-3 py-2 text-sm text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded-md transition-colors">URL Validator</Link>
-                      <Link to="/utilities" className="block px-3 py-2 text-sm text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded-md transition-colors">Credit Card Validator</Link>
-                      <Link to="/utilities" className="block px-3 py-2 text-sm text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded-md transition-colors">UUID Generator</Link>
+                      <Link to="/utilities?tool=case-converter" className="block px-3 py-2 text-sm text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded-md transition-colors">Text Case Converter</Link>
+                      <Link to="/utilities?tool=word-count" className="block px-3 py-2 text-sm text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded-md transition-colors">Word Count</Link>
+                      <Link to="/utilities?tool=line-sort" className="block px-3 py-2 text-sm text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded-md transition-colors">Line Sort</Link>
+                      <Link to="/utilities?tool=remove-duplicates" className="block px-3 py-2 text-sm text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded-md transition-colors">Remove Duplicates</Link>
+                      <Link to="/utilities?tool=text-diff" className="block px-3 py-2 text-sm text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded-md transition-colors">Text Diff</Link>
+                      <Link to="/utilities?tool=regex-tester" className="block px-3 py-2 text-sm text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded-md transition-colors">Regex Tester</Link>
+                      <Link to="/utilities?tool=password-generator" className="block px-3 py-2 text-sm text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded-md transition-colors">Password Generator</Link>
+                      <Link to="/utilities?tool=lorem-ipsum" className="block px-3 py-2 text-sm text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded-md transition-colors">Lorem Ipsum Generator</Link>
+                      <Link to="/utilities?tool=email-validator" className="block px-3 py-2 text-sm text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded-md transition-colors">Email Validator</Link>
+                      <Link to="/utilities?tool=url-validator" className="block px-3 py-2 text-sm text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded-md transition-colors">URL Validator</Link>
+                      <Link to="/utilities?tool=credit-card-validator" className="block px-3 py-2 text-sm text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded-md transition-colors">Credit Card Validator</Link>
+                      <Link to="/utilities?tool=uuid-generator" className="block px-3 py-2 text-sm text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded-md transition-colors">UUID Generator</Link>
                     </div>
                   </div>
                 </div>

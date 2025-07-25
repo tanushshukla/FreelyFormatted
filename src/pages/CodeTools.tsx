@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import Layout from '@/components/Layout';
 import { Copy, Download, Upload, Code, Minimize2, Maximize2 } from 'lucide-react';
 import { toast } from 'sonner';
@@ -13,6 +14,7 @@ type SqlLanguage = 'sql' | 'mysql' | 'postgresql' | 'sqlite' | 'tsql';
 type KeywordCase = 'upper' | 'lower' | 'preserve';
 
 const CodeTools: React.FC = () => {
+  const [searchParams] = useSearchParams();
   const [activeTool, setActiveTool] = useState<CodeTool>('js-beautifier');
   const [input, setInput] = useState('');
   const [output, setOutput] = useState('');
@@ -21,6 +23,14 @@ const CodeTools: React.FC = () => {
   const [keywordCase, setKeywordCase] = useState<KeywordCase>('upper');
   const [semicolons, setSemicolons] = useState(true);
   const [singleQuotes, setSingleQuotes] = useState(false);
+
+  // Handle URL parameters to set active tool
+  useEffect(() => {
+    const toolParam = searchParams.get('tool');
+    if (toolParam && ['js-beautifier', 'js-minifier', 'css-beautifier', 'css-minifier', 'sql-formatter'].includes(toolParam)) {
+      setActiveTool(toolParam as CodeTool);
+    }
+  }, [searchParams]);
 
   const beautifyJavaScript = async () => {
     try {

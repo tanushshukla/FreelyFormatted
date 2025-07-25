@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import Layout from '@/components/Layout';
 import { Copy, Download, Upload, FileText, CheckCircle, AlertCircle, Search } from 'lucide-react';
 import { toast } from 'sonner';
@@ -14,6 +15,7 @@ interface ValidationError {
 }
 
 const XmlHtmlTools: React.FC = () => {
+  const [searchParams] = useSearchParams();
   const [activeTool, setActiveTool] = useState<XmlHtmlTool>('xml-formatter');
   const [input, setInput] = useState('');
   const [output, setOutput] = useState('');
@@ -22,6 +24,14 @@ const XmlHtmlTools: React.FC = () => {
   // const [xsdSchema, setXsdSchema] = useState(''); // TODO: Implement XSD validation
   const [errors, setErrors] = useState<ValidationError[]>([]);
   const [isValid, setIsValid] = useState<boolean | null>(null);
+
+  // Handle URL parameters to set active tool
+  useEffect(() => {
+    const toolParam = searchParams.get('tool');
+    if (toolParam && ['xml-formatter', 'html-formatter', 'xml-validator', 'html-validator', 'xpath-tester'].includes(toolParam)) {
+      setActiveTool(toolParam as XmlHtmlTool);
+    }
+  }, [searchParams]);
 
   const formatXml = () => {
     try {

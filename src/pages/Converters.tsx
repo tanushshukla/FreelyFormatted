@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import Layout from '@/components/Layout';
 import { Copy, Download, Upload, ArrowRightLeft, FileText, Database } from 'lucide-react';
 import { toast } from 'sonner';
@@ -8,11 +9,32 @@ import Papa from 'papaparse';
 type ConverterTool = 'json-yaml' | 'json-csv' | 'csv-json' | 'yaml-json' | 'xml-json' | 'base64-text' | 'text-base64' | 'url-encode' | 'url-decode';
 
 const Converters: React.FC = () => {
+  const [searchParams] = useSearchParams();
   const [activeTool, setActiveTool] = useState<ConverterTool>('json-yaml');
   const [input, setInput] = useState('');
   const [output, setOutput] = useState('');
   const [csvDelimiter, setCsvDelimiter] = useState(',');
   const [csvHasHeaders, setCsvHasHeaders] = useState(true);
+
+  // Handle URL parameters to set active tool
+  useEffect(() => {
+    const toolParam = searchParams.get('tool');
+    const toolMapping: Record<string, ConverterTool> = {
+      'json-to-yaml': 'json-yaml',
+      'yaml-to-json': 'yaml-json',
+      'json-to-csv': 'json-csv',
+      'csv-to-json': 'csv-json',
+      'xml-to-json': 'xml-json',
+      'base64-encode': 'text-base64',
+      'base64-decode': 'base64-text',
+      'url-encode': 'url-encode',
+      'url-decode': 'url-decode'
+    };
+    
+    if (toolParam && toolMapping[toolParam]) {
+      setActiveTool(toolMapping[toolParam]);
+    }
+  }, [searchParams]);
 
   const convertJsonToYaml = () => {
     try {
